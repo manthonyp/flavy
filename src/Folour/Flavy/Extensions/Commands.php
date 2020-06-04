@@ -62,7 +62,7 @@ abstract class Commands
         $prop = isset($this->_cmd[$cmd]) ? $this->_cmd[$cmd] : [];
         $cmd = isset($this->_cmd[$cmd]) ? $this->_cmd[$cmd]['cmd'] : $cmd;
 
-        $process = new Process(vsprintf($cmd, array_values($args)));
+        $process = Process::fromShellCommandline(vsprintf($cmd, array_values($args)));
         $process->run();
 
         if($process->isSuccessful()) {
